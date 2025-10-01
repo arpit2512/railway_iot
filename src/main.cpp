@@ -6,7 +6,15 @@ const char* ssid = "hotspot";
 const char* password = "12345678";
 const char* firmwareUrl = "https://raw.githubusercontent.com/arpit2512/esp32dev/refs/heads/main/firmware.bin";
 
-
+void performOTA() ;
+void setup() {
+  Serial.begin(115200);
+  delay(1000); // Give time for Serial to initialize
+  performOTA();
+}
+void loop() {
+  // Nothing to do here
+}
 void performOTA() {
   
 

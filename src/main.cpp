@@ -111,7 +111,7 @@ void performOTA() {
 
     // Start OTA update
     if (Update.begin(len)) {
-      Serial.println("Starting OTA...");
+      Serial.println("sStarting OTA...");
       
       // Write firmware to flash
       size_t written = Update.writeStream(*stream);

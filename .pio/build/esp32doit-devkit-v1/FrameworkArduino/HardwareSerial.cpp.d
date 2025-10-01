@@ -1,6 +1,6 @@
 .pio/build/esp32doit-devkit-v1/FrameworkArduino/HardwareSerial.cpp.o: \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.cpp \
- C:/Users/Home/.platformio/packages/framework-arduinoespressif32/variants/doitESP32devkitV1/pins_arduino.h \
+ C:/Users/Home/.platformio/packages/framework-arduinoespressif32/variants/esp32/pins_arduino.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/io_pin_remap.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \

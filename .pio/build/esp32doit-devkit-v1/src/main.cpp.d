@@ -85,7 +85,7 @@
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-uart.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/hal/include/hal/uart_types.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-gpio.h \
- C:/Users/Home/.platformio/packages/framework-arduinoespressif32/variants/doitESP32devkitV1/pins_arduino.h \
+ C:/Users/Home/.platformio/packages/framework-arduinoespressif32/variants/esp32/pins_arduino.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-touch.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-dac.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/gpio.h \
@@ -237,10 +237,6 @@
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/libraries/Update/src/Update.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/MD5Builder.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_rom/include/esp_rom_md5.h \
- .pio/libdeps/esp32doit-devkit-v1/PubSubClient/src/PubSubClient.h \
- .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson.h \
- .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson.hpp \
- .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson/Configuration.hpp \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src/BluetoothSerial.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/bt/host/bluedroid/api/include/api/esp_gap_bt_api.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/bt/host/bluedroid/api/include/api/esp_bt_defs.h \

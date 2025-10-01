@@ -5,9 +5,9 @@
 #include <BluetoothSerial.h>
 
 // --- WiFi & OTA Configuration ---
-const char* ssid = "hotspot";
-const char* password = "12345678";
-const char* firmwareUrl = "https://raw.githubusercontent.com/arpit2512/railway_iot/78076d1e9419c5e8c318ea1b49c06355cc39dd59/.pio/build/esp32doit-devkit-v1/firmware.bin";
+const char* ssid = "Xiaomi_6569";
+const char* password = "8076382852";
+const char* firmwareUrl = "https://raw.githubusercontent.com/arpit2512/railway_iot/refs/heads/main/.pio/build/esp32doit-devkit-v1/firmware.bin";
 
 // --- Bluetooth Configuration ---
 BluetoothSerial SerialBT;
@@ -111,7 +111,7 @@ void performOTA() {
 
     // Start OTA update
     if (Update.begin(len)) {
-      Serial.println("sStarting OTA...");
+      Serial.println("Starting OTA...");
       
       // Write firmware to flash
       size_t written = Update.writeStream(*stream);

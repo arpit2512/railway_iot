@@ -3,7 +3,7 @@
 #include <HTTPClient.h>
 #include <Update.h>
 #include <BluetoothSerial.h>
-
+#define  LED_BUILTIN 2
 // --- WiFi & OTA Configuration ---
 const char* ssid = "Xiaomi_6569";
 const char* password = "8076382852";
@@ -26,10 +26,12 @@ void handleBluetoothCommands();
 //================================================================================
 void setup() {
   Serial.begin(115200);
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
 
 
 
-  if (!SerialBT.begin("ESP32_OTA_Trigger")) {
+  if (!SerialBT.begin("RAVI_OTA_Trigger")) {
     Serial.println("An error occurred initializing Bluetooth");
   } else {
     Serial.println("Bluetooth active. Send 'START_OTA' to begin update.");
@@ -41,6 +43,17 @@ void setup() {
 //================================================================================
 void loop() {
   handleBluetoothCommands();
+  static unsigned long previousMillis = 0;
+  const long interval = 500; // Blink interval in ms
+
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+    static int ledState = LOW;
+    ledState = !ledState;
+    digitalWrite(LED_PIN, ledState);
+  }
 }
 
 //================================================================================

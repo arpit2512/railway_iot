@@ -234,6 +234,7 @@
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/mbedtls/port/include/aes/esp_aes.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/hal/include/hal/aes_types.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/mbedtls/mbedtls/include/mbedtls/error.h \
+ .pio/libdeps/esp32doit-devkit-v1/PubSubClient/src/PubSubClient.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/libraries/Update/src/Update.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/cores/esp32/MD5Builder.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_rom/include/esp_rom_md5.h \

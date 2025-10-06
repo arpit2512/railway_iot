@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include <PubSubClient.h>
 #include <Update.h>
 #include <BluetoothSerial.h>
 #define  LED_BUILTIN 2
@@ -8,6 +9,17 @@
 const char* ssid = "Xiaomi_6569";
 const char* password = "8076382852";
 const char* firmwareUrl = "https://raw.githubusercontent.com/arpit2512/railway_iot/refs/heads/main/.pio/build/esp32doit-devkit-v1/firmware.bin";
+
+const char* mqtt_server = "127.0.0.1";
+const int mqtt_port = 1883;
+
+float temperature = 0;
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+long lastMsg = 0;
+char msg[50];
+int value = 0;
 
 // --- Bluetooth Configuration ---
 BluetoothSerial SerialBT;
@@ -20,6 +32,8 @@ const int LED_PIN = 2;
 void setup_wifi();
 void performOTA();
 void handleBluetoothCommands();
+void callback(char* topic, byte* message, unsigned int length);
+void reconnect();
 
 //================================================================================
 // SETUP FUNCTION
@@ -29,7 +43,9 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, LOW);
 
-
+setup_wifi();
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
 
   if (!SerialBT.begin("RAVI_OTA_Trigger")) {
     Serial.println("An error occurred initializing Bluetooth");
@@ -43,6 +59,32 @@ void setup() {
 //================================================================================
 void loop() {
   handleBluetoothCommands();
+
+
+   if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  long now = millis();
+  if (now - lastMsg > 5000) {
+    // Temperature in Celsius
+    char tempString[8];
+    temperature = random(20, 30); // Simulated temperature value
+    dtostrf(temperature, 1, 2, tempString);
+    Serial.print("Temperature: ");
+    Serial.println(tempString);
+    client.publish("esp32/temperature", tempString);
+    Serial.println(tempString);
+    client.publish("esp32/temperature", tempString);
+  }
+
+
+
+
+
+
+
   static unsigned long previousMillis = 0;
   const long interval = 500; // Blink interval in ms
 
@@ -176,4 +218,72 @@ void performOTA() {
 
   // End HTTP connection
   http.end();
+}
+
+void setup_wifi() {
+  delay(10);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+
+void callback(char* topic, byte* message, unsigned int length) {
+  Serial.print("Message arrived on topic: ");
+  Serial.print(topic);
+  Serial.print(". Message: ");
+  String messageTemp;
+  
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)message[i]);
+    messageTemp += (char)message[i];
+  }
+  Serial.println();
+
+  // Feel free to add more if statements to control more GPIOs with MQTT
+
+  // If a message is received on the topic esp32/output, you check if the message is either "on" or "off". 
+  // Changes the output state according to the message
+  if (String(topic) == "esp32/output") {
+    Serial.print("Changing output to ");
+    if(messageTemp == "on"){
+      Serial.println("on");
+      digitalWrite(LED_BUILTIN, HIGH);
+    }
+    else if(messageTemp == "off"){
+      Serial.println("off");
+      digitalWrite(LED_BUILTIN, LOW);
+    }
+  }
+}
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Attempt to connect
+    if (client.connect("ESP8266Client")) {
+      Serial.println("connected");
+      // Subscribe
+      client.subscribe("esp32/output");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
 }

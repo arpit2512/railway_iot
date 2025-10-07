@@ -244,4 +244,7 @@
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/bt/host/bluedroid/api/include/api/esp_spp_api.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src/BTScan.h \
  C:/Users/Home/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src/BTAddress.h \
- C:/Users/Home/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src/BTAdvertisedDevice.h
+ C:/Users/Home/.platformio/packages/framework-arduinoespressif32/libraries/BluetoothSerial/src/BTAdvertisedDevice.h \
+ .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson.h \
+ .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson.hpp \
+ .pio/libdeps/esp32doit-devkit-v1/ArduinoJson/src/ArduinoJson/Configuration.hpp
